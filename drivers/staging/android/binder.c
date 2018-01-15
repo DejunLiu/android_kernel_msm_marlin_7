@@ -2677,7 +2677,7 @@ static int binder_free_thread(struct binder_proc *proc,
 	return active_transactions;
 }
 
-static unsigned int binder_poll(struct file *filp,
+unsigned int binder_poll(struct file *filp,
 				struct poll_table_struct *wait)
 {
 	struct binder_proc *proc = filp->private_data;
@@ -2812,7 +2812,7 @@ out:
 	return ret;
 }
 
-static long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
+long binder_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
 	int ret;
 	struct binder_proc *proc = filp->private_data;
@@ -2925,7 +2925,7 @@ static struct vm_operations_struct binder_vm_ops = {
 	.fault = binder_vm_fault,
 };
 
-static int binder_mmap(struct file *filp, struct vm_area_struct *vma)
+int binder_mmap(struct file *filp, struct vm_area_struct *vma)
 {
 	int ret;
 
@@ -3029,7 +3029,7 @@ err_bad_arg:
 	return ret;
 }
 
-static int binder_open(struct inode *nodp, struct file *filp)
+int binder_open(struct inode *nodp, struct file *filp)
 {
 	struct binder_proc *proc;
 
@@ -3066,7 +3066,7 @@ static int binder_open(struct inode *nodp, struct file *filp)
 	return 0;
 }
 
-static int binder_flush(struct file *filp, fl_owner_t id)
+int binder_flush(struct file *filp, fl_owner_t id)
 {
 	struct binder_proc *proc = filp->private_data;
 
@@ -3096,7 +3096,7 @@ static void binder_deferred_flush(struct binder_proc *proc)
 		     wake_count);
 }
 
-static int binder_release(struct inode *nodp, struct file *filp)
+int binder_release(struct inode *nodp, struct file *filp)
 {
 	struct binder_proc *proc = filp->private_data;
 

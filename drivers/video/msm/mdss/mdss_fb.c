@@ -3390,6 +3390,12 @@ static int mdss_fb_pan_display_sub(struct fb_var_screeninfo *var,
 			       struct fb_info *info)
 {
 	struct msm_fb_data_type *mfd = (struct msm_fb_data_type *)info->par;
+	#if 1 // DEBUG TEST
+        if(!mfd) {
+	    printk("+++ BUG : mdss_fb_pan_display_sub MFD NULL +++\n");
+            return -EPERM;
+	}
+	#endif
 
 	if (!mfd->op_enable)
 		return -EPERM;

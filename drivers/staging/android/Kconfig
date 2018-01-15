@@ -126,6 +126,10 @@ config ONESHOT_SYNC_USER
 	help
 	  Provide a userspace API for creating oneshot sync objects.
 
+config ANDROID_CONBINDER_IPC
+	bool "Android conbinder virtual driver"
+	default n
+
 source "drivers/staging/android/ion/Kconfig"
 
 source "drivers/staging/android/fiq_debugger/Kconfig"
